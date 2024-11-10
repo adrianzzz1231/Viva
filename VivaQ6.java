@@ -75,7 +75,7 @@ public class vivaQ6 {
             System.out.println("No negative numbers were entered.");
         }
 
-        scanner.close();
+        
     }
 }
 
