@@ -1,47 +1,43 @@
 import java.util.Scanner;
 
-public class vivaQ6 {
+public class TournamentAnalyzer {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        // Variables for analysis
+
         int highest = Integer.MIN_VALUE;
         int secondHighest = Integer.MIN_VALUE;
         int highestCount = 0;
         int secondHighestCount = 0;
-        int totalSum = 0;
-        boolean hasNegative = false;
+        int sum = 0;
+        boolean negativePresent = false;
 
-        System.out.println("Enter numbers: ");
+        System.out.println("Enter numbers (end with 0)");
 
         while (true) {
             int score = scanner.nextInt();
 
-            // End input on zero
+            // Exit condition when score is 0
             if (score == 0) break;
-            
-            // Update sum
-            totalSum += score;
-            
-            // Check if there are negative numbers
+
+            // Update the sum of all scores
+            sum += score;
+
+            // Check for negative scores
             if (score < 0) {
-                hasNegative = true;
+                negativePresent = true;
             }
 
-            // Determine highest and second-highest scores and their counts
+            // Update highest and second highest scores and their counts
             if (score > highest) {
-                // Update second-highest before changing highest
                 secondHighest = highest;
                 secondHighestCount = highestCount;
-                
-                // Update highest and reset count
+
                 highest = score;
                 highestCount = 1;
             } else if (score == highest) {
                 highestCount++;
             } else if (score > secondHighest) {
-                // Update second-highest score
                 secondHighest = score;
                 secondHighestCount = 1;
             } else if (score == secondHighest) {
@@ -49,34 +45,25 @@ public class vivaQ6 {
             }
         }
 
-        // Check if no valid scores were entered
-        if (highest == Integer.MIN_VALUE) {
-            System.out.println("No scores entered.");
-            scanner.close();
-            return;
-        }
-
         // Display results
         System.out.println("The largest number is " + highest);
         System.out.println("The occurrence count of the largest number is " + highestCount);
 
-        // Display second-highest score if it exists
         if (secondHighest != Integer.MIN_VALUE) {
             System.out.println("The second-largest number is " + secondHighest);
             System.out.println("The occurrence count of the second-largest number is " + secondHighestCount);
+        } else {
+            System.out.println("No second-highest number found.");
         }
 
-        System.out.println("The total sum of all numbers is " + totalSum);
+        System.out.println("The total sum of all numbers is " + sum);
 
-        // Indicate if there were any negative numbers
-        if (hasNegative) {
+        if (negativePresent) {
             System.out.println("Negative numbers were entered.");
         } else {
             System.out.println("No negative numbers were entered.");
         }
 
-        
+        scanner.close();
     }
 }
-
-       
