@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TournamentAnalyzer {
+public class vivaQ6 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
